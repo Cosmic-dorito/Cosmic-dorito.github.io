@@ -1,0 +1,1494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanjay Subramanyan — AI/ML, Embedded Systems &amp; Edge Computing</title>
+<meta name="description" content="Final-year Electronics & Communication Engineering student (AI/ML minor) at Amrita Vishwa Vidyapeetham. Distributed edge scheduling, physics-informed machine learning, sensor systems, RTL and analog design — with measured results from each project.">
+<link rel="canonical" href="https://cosmic-dorito.github.io/">
+<meta name="author" content="Sanjay Subramanyan">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F7F7F4" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cosmic-dorito.github.io/">
+<meta property="og:title" content="Sanjay Subramanyan — AI/ML, Embedded Systems &amp; Edge Computing">
+<meta property="og:description" content="Final-year Electronics & Communication Engineering student (AI/ML minor) at Amrita Vishwa Vidyapeetham. Distributed edge scheduling, physics-informed machine learning, sensor systems, RTL and analog design — with measured results from each project.">
+<meta property="og:image" content="https://cosmic-dorito.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sanjay Subramanyan — AI/ML, Embedded Systems &amp; Edge Computing">
+<meta name="twitter:description" content="Final-year Electronics & Communication Engineering student (AI/ML minor) at Amrita Vishwa Vidyapeetham. Distributed edge scheduling, physics-informed machine learning, sensor systems, RTL and analog design — with measured results from each project.">
+<meta name="twitter:image" content="https://cosmic-dorito.github.io/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sanjay Subramanyan","url":"https://cosmic-dorito.github.io/","email":"mailto:sanjaysubramanyan1324@gmail.com","jobTitle":"Electronics and Communication Engineering student","alumniOf":{"@type":"CollegeOrUniversity","name":"Amrita Vishwa Vidyapeetham"},"knowsAbout":["Edge computing","Physics-informed machine learning","Embedded systems","FPGA and RTL design","Analog circuit design","Signal processing"],"sameAs":["https://github.com/Cosmic-dorito"]}</script>
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F7F7F4; --surface:#FFFFFF; --surface2:#EFEFEA; --ink:#16181C; --ink2:#4A4F57;
+  --mut:#666C76; --line:#E2E1D9; --line2:#CFCEC4; --acc:#0E5A64; --accInk:#0E5A64;
+  --accSoft:#E4EEEF; --accLine:#B9D2D5; --ok:#22683F; --warn:#8A4B12; --warnSoft:#F6EDE2;
+  --card-sh:0 1px 2px rgba(22,24,28,.04),0 12px 32px -16px rgba(22,24,28,.14);
+  --disp:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1114; --surface:#15181D; --surface2:#1C2026; --ink:#E9E8E3; --ink2:#B4B8BF;
+  --mut:#858B94; --line:#262B31; --line2:#343A42; --acc:#59BCC9; --accInk:#7BCBD6;
+  --accSoft:#11262B; --accLine:#22434A; --ok:#63B586; --warn:#D89A5C; --warnSoft:#291F13;
+  --card-sh:0 1px 2px rgba(0,0,0,.4),0 14px 36px -18px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --bg:#0F1114; --surface:#15181D; --surface2:#1C2026; --ink:#E9E8E3; --ink2:#B4B8BF;
+  --mut:#858B94; --line:#262B31; --line2:#343A42; --acc:#59BCC9; --accInk:#7BCBD6;
+  --accSoft:#11262B; --accLine:#22434A; --ok:#63B586; --warn:#D89A5C; --warnSoft:#291F13;
+  --card-sh:0 1px 2px rgba(0,0,0,.4),0 14px 36px -18px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--disp);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+a{color:var(--accInk);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+::selection{background:var(--accSoft);color:var(--ink)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:22px;height:58px}
+.brand{font-weight:800;letter-spacing:-.02em;font-size:15.5px;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand .dot{color:var(--accInk)}
+.nav-links{display:flex;gap:18px;margin-left:auto;align-items:center}
+.nav-links a{font-size:13.5px;font-weight:600;color:var(--ink2)}
+.nav-links a:hover{color:var(--accInk);text-decoration:none}
+#themeBtn{background:none;border:1px solid var(--line2);border-radius:8px;color:var(--ink2);
+  font-family:var(--mono);font-size:11px;padding:5px 9px;cursor:pointer}
+#themeBtn:hover{border-color:var(--acc);color:var(--accInk)}
+@media (max-width:660px){.nav-links a.hideS{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#net{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.hero-in{position:relative;padding-top:clamp(64px,11vw,128px);padding-bottom:clamp(44px,7vw,84px)}
+.kick{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accInk);margin-bottom:20px}
+h1.name{font-weight:800;letter-spacing:-.035em;line-height:.96;margin:0 0 22px;
+  font-size:clamp(44px,8.6vw,92px);text-wrap:balance}
+.tagline{font-size:clamp(17px,2.3vw,21px);font-weight:600;letter-spacing:-.01em;color:var(--ink);
+  max-width:34ch;line-height:1.4;margin:0 0 14px}
+.tagline .x{color:var(--accInk)}
+.sub{color:var(--ink2);max-width:56ch;font-size:clamp(15px,1.9vw,17px);margin:0 0 30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;
+  padding:11px 20px;border-radius:10px;border:1px solid var(--line2);color:var(--ink);
+  background:var(--surface);cursor:pointer;transition:transform .18s cubic-bezier(.2,.6,.2,1),border-color .18s,background .18s}
+.btn:hover{text-decoration:none;transform:translateY(-2px);border-color:var(--acc)}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0F1114}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:#0F1114}}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn .arr{transition:transform .18s}
+.btn:hover .arr{transform:translateX(3px)}
+
+/* ---------- metrics band ---------- */
+.band{border-bottom:1px solid var(--line);background:var(--surface)}
+.band-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+.cell{padding:22px clamp(14px,2vw,24px);border-right:1px solid var(--line)}
+.cell:last-child{border-right:0}
+.cell .v{font-family:var(--mono);font-weight:600;font-size:clamp(20px,2.6vw,27px);
+  letter-spacing:-.02em;color:var(--accInk);font-variant-numeric:tabular-nums;line-height:1.1}
+.cell .v small{font-size:.62em;color:var(--mut);font-weight:500}
+.cell .k{font-size:12px;color:var(--mut);margin-top:6px;line-height:1.4}
+@media (max-width:760px){.cell:nth-child(n+4){border-top:1px solid var(--line)}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(52px,8vw,92px) 0}
+section + section{border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(26px,4vw,40px)}
+.sec-num{font-family:var(--mono);font-size:12px;color:var(--mut)}
+h2{font-weight:800;letter-spacing:-.025em;font-size:clamp(24px,3.6vw,34px);margin:0;text-wrap:balance}
+h3{font-weight:700;letter-spacing:-.015em;font-size:clamp(17px,2.2vw,20px);margin:30px 0 10px}
+p{margin:0 0 14px;max-width:70ch}
+.lead{font-size:clamp(15.5px,2vw,17.5px);color:var(--ink2);max-width:64ch}
+
+/* ---------- credibility ---------- */
+.cred{display:flex;flex-wrap:wrap;gap:10px 34px;align-items:baseline}
+.cred span{font-weight:700;font-size:14.5px;color:var(--ink2);letter-spacing:.01em}
+.cred .note{font-family:var(--mono);font-size:11px;color:var(--mut);width:100%;margin-top:6px}
+
+/* ---------- work cards ---------- */
+.works{display:flex;flex-direction:column;gap:16px}
+.wcard{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;color:var(--ink);
+  transition:transform .22s cubic-bezier(.2,.6,.2,1),border-color .22s,box-shadow .22s}
+.wcard:hover{text-decoration:none;transform:translateY(-3px);border-color:var(--accLine);box-shadow:var(--card-sh)}
+.wcard .tx{padding:clamp(20px,3vw,30px)}
+.windex{font-family:var(--mono);font-size:11.5px;color:var(--mut);display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.status{font-size:10px;letter-spacing:.1em;font-weight:600;padding:2.5px 8px;border-radius:99px;
+  border:1px solid var(--line2);color:var(--ink2);text-transform:uppercase}
+.status.on{border-color:var(--accLine);color:var(--accInk);background:var(--accSoft)}
+.wcard h3{margin:0 0 8px;font-size:clamp(18px,2.5vw,22px)}
+.wcard .d{color:var(--ink2);font-size:14.5px;margin-bottom:16px;max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:6px;
+  background:var(--surface2);border:1px solid var(--line);color:var(--ink2);font-variant-numeric:tabular-nums}
+.chip.m{background:var(--accSoft);border-color:var(--accLine);color:var(--accInk)}
+.wcard .vis{border-left:1px solid var(--line);background:var(--surface2);min-height:190px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.wcard .vis img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;
+  transition:transform .35s cubic-bezier(.2,.6,.2,1)}
+.wcard:hover .vis img{transform:scale(1.035)}
+.wcard .vis svg{width:88%;height:auto;max-height:230px}
+.goto{margin-top:16px;font-weight:700;font-size:13.5px;color:var(--accInk);display:inline-flex;gap:7px;align-items:center}
+.goto .arr{transition:transform .18s}
+.wcard:hover .goto .arr{transform:translateX(4px)}
+@media (max-width:780px){.wcard{grid-template-columns:1fr}.wcard .vis{border-left:0;border-top:1px solid var(--line);min-height:150px}
+  .wcard .vis.diagram{display:none}}
+
+/* supporting cards */
+.minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:16px}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.mini h3{margin:8px 0 8px;font-size:17px}
+.mini p{font-size:14px;color:var(--ink2)}
+
+/* ---------- experience ---------- */
+.xp{display:grid;grid-template-columns:150px 1fr;gap:clamp(14px,3vw,34px);padding:22px 0;border-top:1px solid var(--line)}
+.xp:first-of-type{border-top:0;padding-top:0}
+.xp .when{font-family:var(--mono);font-size:12px;color:var(--mut);padding-top:4px}
+.xp h3{margin:0 0 2px;font-size:17.5px}
+.xp .org{color:var(--accInk);font-weight:600;font-size:14px;margin-bottom:8px}
+.xp ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14.5px}
+.xp li{margin-bottom:5px}
+.xp .cs{font-size:13px;font-weight:700}
+@media (max-width:640px){.xp{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- skills ---------- */
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sk{background:var(--surface);padding:20px 22px}
+.sk .h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accInk);margin-bottom:9px}
+.sk .b{font-size:14px;color:var(--ink2);line-height:1.75}
+
+/* ---------- contact ---------- */
+.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(28px,5vw,48px);text-align:left}
+.contact-card h2{margin-bottom:10px}
+.c-rows{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+
+/* ---------- case pages ---------- */
+.case-hero{padding:clamp(44px,7vw,72px) 0 clamp(28px,4vw,40px);border-bottom:1px solid var(--line)}
+.back{font-family:var(--mono);font-size:12px;color:var(--mut);display:inline-flex;gap:8px;margin-bottom:26px}
+h1.case{font-weight:800;letter-spacing:-.03em;line-height:1.04;font-size:clamp(30px,5.6vw,52px);margin:0 0 16px;text-wrap:balance;max-width:24ch}
+.case-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.case-sub{color:var(--ink2);max-width:62ch;font-size:clamp(15px,2vw,17.5px)}
+.cnav{position:sticky;top:58px;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);overflow-x:auto}
+.cnav-in{display:flex;gap:4px;padding:0 clamp(18px,4vw,44px);max-width:1120px;margin:0 auto}
+.cnav a{font-family:var(--mono);font-size:11.5px;padding:11px 12px;color:var(--mut);white-space:nowrap;border-bottom:2px solid transparent}
+.cnav a:hover{color:var(--accInk);text-decoration:none}
+.cnav a.on{color:var(--accInk);border-bottom-color:var(--acc)}
+.cs-sec{padding:clamp(36px,6vw,64px) 0;border-bottom:1px solid var(--line)}
+.cs-sec:last-of-type{border-bottom:0}
+.cs-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accInk);display:block;margin-bottom:12px}
+.cs-sec h2{font-size:clamp(21px,3.2vw,29px)}
+.cs-sec .body{margin-top:18px}
+ul.tick{margin:0 0 14px;padding-left:0;list-style:none;max-width:70ch}
+ul.tick li{padding-left:24px;position:relative;margin-bottom:8px;color:var(--ink2);font-size:15px}
+ul.tick li::before{content:"—";position:absolute;left:0;color:var(--accInk);font-weight:700}
+
+/* metric chips row */
+.mrow{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.mchip{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;
+  padding:8px 12px;border-radius:8px;background:var(--surface);border:1px solid var(--line2)}
+.mchip b{color:var(--accInk);font-weight:600}
+
+/* tables */
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);
+  text-align:left;padding:11px 14px;background:var(--surface2);border-bottom:1px solid var(--line2);font-weight:500;white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.best{color:var(--accInk);font-weight:600}
+caption{caption-side:bottom;text-align:left;padding:10px 14px;font-size:12px;color:var(--mut);border-top:1px solid var(--line)}
+
+/* callouts */
+.honest{background:var(--warnSoft);border:1px solid color-mix(in srgb,var(--warn) 30%,transparent);
+  border-radius:12px;padding:18px 20px;margin:22px 0;max-width:74ch}
+.honest .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--warn);margin-bottom:8px}
+.honest p{font-size:14.5px;margin-bottom:0;color:var(--ink)}
+.notebox{background:var(--accSoft);border:1px solid var(--accLine);border-radius:12px;padding:18px 20px;margin:22px 0;max-width:74ch}
+.notebox .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accInk);margin-bottom:8px}
+.notebox p{font-size:14.5px;margin-bottom:0}
+
+/* flow diagram */
+.flow{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;margin:22px 0;max-width:100%}
+.fnode{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:12px 16px;
+  font-family:var(--mono);font-size:12px;line-height:1.45;text-align:center;min-width:110px;
+  display:flex;flex-direction:column;justify-content:center}
+.fnode b{font-weight:600;color:var(--accInk);font-size:12.5px}
+.fnode small{color:var(--mut);font-size:10.5px}
+.farr{display:flex;align-items:center;padding:0 10px;color:var(--mut);font-family:var(--mono)}
+.farr::after{content:"→"}
+@media (max-width:700px){.flow{flex-direction:column}.farr{padding:6px 0 6px 22px}.farr::after{content:"↓"}}
+
+/* figures */
+.fig{margin:22px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.fig img{width:100%;display:block;max-width:100%}
+.fig figcaption{font-size:12.5px;color:var(--mut);padding:11px 16px;border-top:1px solid var(--line)}
+.fig2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.fig2 .fig{margin:0}
+@media (max-width:700px){.fig2{grid-template-columns:1fr}}
+
+/* terminal */
+.term{background:#111417;border:1px solid #2A2F36;border-radius:12px;margin:22px 0;overflow:hidden}
+.term .bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid #2A2F36}
+.term .bar i{width:10px;height:10px;border-radius:50%;background:#3A4048;display:block}
+.term pre{margin:0;padding:16px 18px;font-family:var(--mono);font-size:12px;line-height:1.7;
+  color:#C9D1D9;overflow-x:auto;white-space:pre}
+.term .g{color:#7EC699}.term .r{color:#E5876F}.term .c{color:#8B949E}.term .y{color:#E3C078}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:36px 0 64px;color:var(--mut);font-size:13px}
+footer .fin{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline}
+footer .honest-line{font-family:var(--mono);font-size:11.5px;margin-top:14px;max-width:70ch}
+
+/* reveal animation */
+.rv{opacity:0;transform:translateY(10px);transition:opacity .5s cubic-bezier(.2,.6,.2,1),transform .5s cubic-bezier(.2,.6,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+.page{display:none}
+.page.on{display:block}
+</style>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#/">sanjay<span class="dot">.</span>subramanyan</a>
+    <div class="nav-links">
+      <a href="#/#work">Work</a>
+      <a href="#/#experience" class="hideS">Experience</a>
+      <a href="#/#research" class="hideS">Research</a>
+      <a href="#/#about" class="hideS">About</a>
+      <a href="#/#contact">Contact</a>
+      <button id="themeBtn" aria-label="Toggle color theme">AUTO</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page" id="page-home">
+<header class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div class="kick rv">AI/ML &times; Embedded Systems &times; Edge Computing — B.Tech ECE &rsquo;27, Amrita Vishwa Vidyapeetham</div>
+    <h1 class="name rv">Sanjay<br>Subramanyan</h1>
+    <p class="tagline rv">I build intelligent systems for real engineering problems,<span class="x"> then measure them properly.</span></p>
+    <p class="sub rv">Distributed edge schedulers, physics-informed reconstruction, LLM document pipelines,
+    underwater robots, analog front ends. Software through silicon; every claim below traces to a report,
+    paper, or bench measurement.</p>
+    <div class="cta-row rv">
+      <a class="btn primary" href="#/#work">View work <span class="arr">→</span></a>
+      <button class="btn" id="resumeBtn" hidden>Résumé (PDF)</button>
+      <a class="btn" href="mailto:sanjaysubramanyan1324@gmail.com">Contact</a>
+      <a class="btn" href="https://github.com/Cosmic-dorito" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<div class="band">
+  <div class="wrap band-in">
+    <div class="cell rv"><div class="v">942<small> Mbit/s</small></div><div class="k">Measured cluster fabric, iperf3, zero retransmits</div></div>
+    <div class="cell rv"><div class="v">20.96<small> GFLOPS</small></div><div class="k">HPL/Linpack across two Pi 4 nodes — 2.05&times; scaling</div></div>
+    <div class="cell rv"><div class="v">~74<small> µs</small></div><div class="k">Scheduler decision cost per task, measured</div></div>
+    <div class="cell rv"><div class="v">99.82<small>%</small></div><div class="k">Bearing fault accuracy, four classes under variable load</div></div>
+    <div class="cell rv"><div class="v">0.193<small> W</small></div><div class="k">FPGA design on-chip power, post-synthesis, deployed</div></div>
+  </div>
+</div>
+
+<section id="cred">
+  <div class="wrap">
+    <div class="cred rv">
+      <span>National Institute of Ocean Technology</span>
+      <span>TVS Motor Company</span>
+      <span>Hyundai Motor India</span>
+      <span>Amrita Vishwa Vidyapeetham</span>
+      <div class="note">Internships and study — institutional experience, not endorsement.</div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">01</span><h2>Selected work</h2></div>
+    <div class="works">
+
+      <a class="wcard rv" href="#/edge">
+        <div class="tx">
+          <div class="windex">01 <span class="status on">Ongoing · Final-year project</span></div>
+          <h3>Adaptive task partitioning on a Raspberry Pi edge cluster</h3>
+          <p class="d">A coordinator/worker runtime that schedules CNN inference across SBC nodes using an
+          online cost model — live capability, queue backlog, communication cost, and thermal derating —
+          on a measured Gigabit fabric with K3s and Prometheus/Grafana underneath.</p>
+          <div class="chips">
+            <span class="chip m">105/105 split · LBE 1.000</span>
+            <span class="chip m">~74 µs/task</span>
+            <span class="chip">MobileNet-v2</span><span class="chip">K3s</span>
+          </div>
+          <span class="goto">Case study <span class="arr">→</span></span>
+        </div>
+        <div class="vis diagram">
+          <svg viewBox="0 0 360 220" role="img" aria-label="Scheduler architecture sketch">
+            <g fill="none" stroke="var(--line2)" stroke-width="1.4">
+              <rect x="120" y="14" width="120" height="34" rx="8" fill="var(--surface)"/>
+              <rect x="30" y="120" width="90" height="34" rx="8" fill="var(--surface)"/>
+              <rect x="135" y="120" width="90" height="34" rx="8" fill="var(--surface)"/>
+              <rect x="240" y="120" width="90" height="34" rx="8" fill="var(--surface)" stroke-dasharray="4 4"/>
+              <rect x="105" y="180" width="150" height="26" rx="8" fill="var(--surface)"/>
+              <path d="M180 48 L75 120 M180 48 L180 120 M180 48 L285 120 M75 154 L150 180 M180 154 L180 180 M285 154 L210 180"/>
+            </g>
+            <g font-family="JetBrains Mono,monospace" font-size="10" fill="var(--ink2)" text-anchor="middle">
+              <text x="180" y="35">AdaptiveMCT</text>
+              <text x="75" y="140">pi4-main1</text><text x="180" y="140">pi4-main2</text>
+              <text x="285" y="140" fill="var(--mut)">Pi 3 · next</text>
+              <text x="180" y="197">GigE 10.0.0.x</text>
+            </g>
+            <circle class="pulse" r="3.5" fill="var(--acc)"><animateMotion dur="2.6s" repeatCount="indefinite" path="M180 48 L75 120"/></circle>
+            <circle class="pulse" r="3.5" fill="var(--acc)"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M180 48 L180 120"/></circle>
+          </svg>
+        </div>
+      </a>
+
+      <a class="wcard rv" href="#/thermal">
+        <div class="tx">
+          <div class="windex">02 <span class="status">Physics-informed ML</span></div>
+          <h3>When do physics-informed neural networks actually help?</h3>
+          <p class="d">Sparse on-chip thermal field reconstruction under power-model and nonlinear-leakage
+          uncertainty. Three controlled studies against classical data assimilation, a physics-embedded
+          Green&rsquo;s-basis PINN that fixes spectral-bias collapse, and a closed-form D-optimal sensor placement.</p>
+          <div class="chips">
+            <span class="chip m">0.60 K · D-optimal, EV6</span>
+            <span class="chip m">2.3&times; vs next-best</span>
+            <span class="chip">SC-GB-PINN</span><span class="chip">code + seeds released</span>
+          </div>
+          <span class="goto">Case study <span class="arr">→</span></span>
+        </div>
+        <div class="vis diagram">
+          <svg viewBox="0 0 360 220" role="img" aria-label="Thermal field sketch">
+            <defs>
+              <radialGradient id="hot" cx="30%" cy="72%" r="70%">
+                <stop offset="0%" stop-color="var(--acc)" stop-opacity=".55"/>
+                <stop offset="55%" stop-color="var(--acc)" stop-opacity=".18"/>
+                <stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect x="40" y="20" width="280" height="180" rx="10" fill="var(--surface)" stroke="var(--line2)" stroke-width="1.4"/>
+            <rect x="40" y="20" width="280" height="180" rx="10" fill="url(#hot)"/>
+            <g stroke="var(--line)" stroke-width="1"><path d="M40 80 h280 M40 140 h280 M133 20 v180 M226 20 v180"/></g>
+            <g fill="none" stroke="var(--accInk)" stroke-width="1.3" opacity=".8">
+              <path d="M70 168 q30 -26 62 -12 t70 -30 t90 -8"/>
+              <path d="M64 186 q40 -18 84 -8 t100 -22"/>
+            </g>
+            <g fill="var(--ink2)">
+              <path d="M96 60 l5 9 h-10 z"/><path d="M210 96 l5 9 h-10 z"/><path d="M150 150 l5 9 h-10 z"/>
+              <path d="M282 58 l5 9 h-10 z"/><path d="M262 160 l5 9 h-10 z"/>
+            </g>
+            <text x="180" y="212" font-family="JetBrains Mono,monospace" font-size="10" fill="var(--mut)" text-anchor="middle">8 sensors → full field + leakage coefficient</text>
+          </svg>
+        </div>
+      </a>
+
+      <a class="wcard rv" href="#/rov">
+        <div class="tx">
+          <div class="windex">03 <span class="status">NIOT · Apr 2026</span></div>
+          <h3>Mini ROV with multi-sensor telemetry &amp; fault-tolerant optical link</h3>
+          <p class="d">Built at the National Institute of Ocean Technology, Deep Sea Technology Group: a
+          Raspberry Pi 5 vehicle with T200 thrusters, depth and motion sensing, RS485 telemetry, and an
+          operator UI — plus a visible-light link that survives corrupted bits by redundancy and retransmission.</p>
+          <div class="chips">
+            <span class="chip m">recovers from injected errors</span>
+            <span class="chip">RS485</span><span class="chip">Pi 5</span><span class="chip">T200 + ESC</span>
+          </div>
+          <span class="goto">Case study <span class="arr">→</span></span>
+        </div>
+        <div class="vis"><img src="assets/rov-front.jpg" alt="Mini ROV prototype: thrusters above a transparent pressure housing" loading="lazy"></div>
+      </a>
+
+      <a class="wcard rv" href="#/patent">
+        <div class="tx">
+          <div class="windex">04 <span class="status on">Deployed · TVSM R&amp;D</span></div>
+          <h3>LLM patent-intelligence pipeline for TVS Motor</h3>
+          <p class="d">Two-layer document intelligence: deterministic parsing for metadata, grounded LLM
+          reasoning for engineering fields — with full-document OCR arbitration, design-patent handling,
+          guard-railed claim cleanup, per-field confidence, and team routing. Deployed internally for
+          TVSM R&amp;D teams.</p>
+          <div class="chips">
+            <span class="chip m">deployed internally</span>
+            <span class="chip">Azure OpenAI</span><span class="chip">Tesseract OCR</span><span class="chip">Streamlit</span>
+          </div>
+          <span class="goto">Case study <span class="arr">→</span></span>
+        </div>
+        <div class="vis diagram">
+          <svg viewBox="0 0 360 220" role="img" aria-label="Pipeline sketch">
+            <g fill="var(--surface)" stroke="var(--line2)" stroke-width="1.4">
+              <rect x="24" y="92" width="70" height="36" rx="8"/>
+              <rect x="118" y="46" width="100" height="36" rx="8"/>
+              <rect x="118" y="138" width="100" height="36" rx="8"/>
+              <rect x="252" y="92" width="84" height="36" rx="8"/>
+            </g>
+            <g fill="none" stroke="var(--line2)" stroke-width="1.4">
+              <path d="M94 110 L118 64 M94 110 L118 156 M218 64 L252 110 M218 156 L252 110"/>
+            </g>
+            <g font-family="JetBrains Mono,monospace" font-size="10" fill="var(--ink2)" text-anchor="middle">
+              <text x="59" y="114">PDF+OCR</text>
+              <text x="168" y="68">regex layer</text>
+              <text x="168" y="160">LLM layer</text>
+              <text x="294" y="114">report</text>
+            </g>
+            <circle r="3.5" fill="var(--acc)"><animateMotion dur="3s" repeatCount="indefinite" path="M94 110 L118 64 L218 64 L252 110"/></circle>
+          </svg>
+        </div>
+      </a>
+
+      <a class="wcard rv" href="#/bearing">
+        <div class="tx">
+          <div class="windex">05 <span class="status">Signal processing · Deep learning</span></div>
+          <h3>Bearing fault diagnosis with frequency-domain attention</h3>
+          <p class="d">FD-MRA: multi-resolution attention over vibration spectra with trainable frequency
+          masks and rotary position embeddings, fused with a 1-D time-domain CNN through a 256-D
+          bottleneck — classifying four fault classes across 0&ndash;3 HP variable load at a latency
+          that runs on the machine rather than in the cloud.</p>
+          <div class="chips">
+            <span class="chip m">99.82% accuracy</span><span class="chip m">macro-F1 0.9982</span>
+            <span class="chip m">0.8 ms inference</span><span class="chip">RoPE attention</span>
+          </div>
+          <span class="goto">Case study <span class="arr">→</span></span>
+        </div>
+        <div class="vis diagram">
+          <svg viewBox="0 0 360 220" role="img" aria-label="Vibration spectrum sketch">
+            <rect x="30" y="24" width="300" height="150" rx="10" fill="var(--surface)" stroke="var(--line2)" stroke-width="1.4"/>
+            <g stroke="var(--accInk)" stroke-width="1.6" opacity=".85">
+              <path d="M50 150 l6 -20 l6 14 l8 -46 l6 38 l8 -12 l10 4 l8 -60 l6 48 l10 -8 l8 6 l10 -30 l8 26 l12 -6 l10 2 l8 -40 l8 34 l12 -4 l10 2 l12 -18 l10 16 l14 -2 l12 0 l16 -8 l14 8" fill="none"/>
+            </g>
+            <g fill="var(--acc)" opacity=".18">
+              <rect x="96" y="34" width="30" height="130"/><rect x="196" y="34" width="26" height="130"/>
+            </g>
+            <text x="180" y="196" font-family="JetBrains Mono,monospace" font-size="10" fill="var(--mut)" text-anchor="middle">learned masks attend fault bands across loads</text>
+          </svg>
+        </div>
+      </a>
+
+      <a class="wcard rv" href="#/steth">
+        <div class="tx">
+          <div class="windex">06 <span class="status">Completed · PCB validated</span></div>
+          <h3>Fully analog electronic stethoscope</h3>
+          <p class="d">No microcontroller anywhere: an electret chestpiece into op-amp gain stages, a 50 Hz
+          notch, and three 4th-order Sallen–Key bandpass paths that isolate heart, lung, and murmur bands —
+          designed on paper, simulated, built, and verified against a bench frequency-response analyzer.</p>
+          <div class="chips">
+            <span class="chip m">notch measured at 49.8 Hz</span>
+            <span class="chip">3 bands</span><span class="chip">Sallen–Key ×3</span><span class="chip">PCB</span>
+          </div>
+          <span class="goto">Case study <span class="arr">→</span></span>
+        </div>
+        <div class="vis"><img src="assets/rov-pod.jpg" alt="Oscilloscope frequency-response analysis of the stethoscope filter chain" loading="lazy"></div>
+      </a>
+
+    </div>
+
+    <div class="minis">
+      <div class="mini rv">
+        <div class="windex">+ <span class="status">Completed · On hardware</span></div>
+        <h3>FPGA memory game on Basys-3</h3>
+        <p>Modular Verilog — FSM game logic, LFSR sequences, debounced 4×4 keypad, clock division from
+        100 MHz, seven-segment driver. Verified in ModelSim, taken through Vivado synthesis, implementation
+        and DRC sign-off, then deployed to the physical XC7A35T board.</p>
+        <div class="chips"><span class="chip m">0.193 W on-chip</span><span class="chip m">0.56% FF util.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">02</span><h2>Experience</h2></div>
+
+    <div class="xp rv">
+      <div class="when">Apr 2026</div>
+      <div>
+        <h3>Research Intern — Deep Sea Technology Group</h3>
+        <div class="org">National Institute of Ocean Technology (NIOT), Ministry of Earth Sciences, Chennai</div>
+        <ul>
+          <li>Developed a mini remotely operated vehicle: Raspberry Pi 5 control, Blue Robotics T200 thrusters
+          with ESCs, depth/pressure sensing, Xsens motion sensing, RS485 telemetry to a laptop operator UI,
+          packaged in a 4-inch pressure housing.</li>
+          <li>Built a fault-tolerant optical wireless link on Arduino: triple-redundancy encoding, majority-vote
+          decoding with correction masks, timeouts and automatic retransmission.</li>
+        </ul>
+        <a class="cs" href="#/rov">Case study →</a>
+      </div>
+    </div>
+
+    <div class="xp rv">
+      <div class="when">May – Jun 2026</div>
+      <div>
+        <h3>AI/ML Intern</h3>
+        <div class="org">TVS Motor Company, Hosur</div>
+        <ul>
+          <li>Built and shipped an LLM-based patent-intelligence pipeline — deterministic metadata extraction
+          plus grounded LLM analysis, OCR for scanned and design patents, confidence scoring and team routing.</li>
+          <li>Deployed internally for TVSM R&amp;D teams with a Streamlit batch UI and a one-command installer.</li>
+        </ul>
+        <a class="cs" href="#/patent">Case study →</a>
+      </div>
+    </div>
+
+    <div class="xp rv">
+      <div class="when">May – Jun 2025</div>
+      <div>
+        <h3>Engineering Intern</h3>
+        <div class="org">Hyundai Motor India Limited</div>
+        <ul>
+          <li>Evaluated automated assembly workflows for HS220 and HS160L six-axis robotic arms — cycle-time
+          distributions, motion-sequencing logic, throughput constraints.</li>
+          <li>Mapped kinematic envelopes, workspace limits and collision-avoidance zones.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp rv">
+      <div class="when">2023 – 2027</div>
+      <div>
+        <h3>B.Tech, Electronics &amp; Communication Engineering — AI/ML minor</h3>
+        <div class="org">Amrita Vishwa Vidyapeetham, Coimbatore</div>
+        <ul>
+          <li>Core CGPA 8.33 · minor CGPA 9.26.</li>
+          <li>NPTEL Embedded Systems Design (IIT Kharagpur) — Elite, top 1%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">03</span><h2>Research</h2></div>
+    <div class="mini rv" style="max-width:760px">
+      <div class="windex"><span class="status">Manuscript · Aug 2026</span></div>
+      <h3>When Do Physics-Informed Neural Networks Help? Sparse On-Chip Thermal Field Reconstruction under
+      Power-Model and Nonlinear-Leakage Uncertainty</h3>
+      <p>S. Sanjay Subramanyan, S. Sahithya, M. Suprithi, J. P. Anitha. Three controlled studies separating
+      power-model from physics-model uncertainty; a self-consistent Green&rsquo;s-basis PINN; a training-free
+      D-optimal sensor placement; and a decision rule for practitioners. All code, seeds and metrics released.</p>
+      <div class="chips">
+        <span class="chip"><a href="#/thermal">Read the case study →</a></span>
+        <span class="chip"><a href="https://github.com/Cosmic-dorito/thermal-pinn" rel="noopener">Code</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">04</span><h2>About</h2></div>
+    <p class="lead rv">I&rsquo;m an electronics and communication engineer with an AI/ML minor, and the work I
+    like best sits where those meet: a model that has to run on a specific device, a sensor whose physics
+    shapes the estimator, a scheduler whose cost model has to survive real network latency.</p>
+    <p class="rv">The pattern across my projects is the same — build the system end to end, instrument it,
+    and let the measurements decide. Sometimes that means reporting that a classical Gaussian process
+    ties the neural network at a fraction of the compute, and saying so. I&rsquo;d rather ship the
+    honest number than the flattering one.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">05</span><h2>Skills</h2></div>
+    <div class="sk-grid rv">
+      <div class="sk"><div class="h">AI / ML</div><div class="b">PyTorch · TensorFlow · MATLAB · CNNs · SNNs · PINNs · Gaussian processes · attention architectures</div></div>
+      <div class="sk"><div class="h">Edge / Systems</div><div class="b">Distributed scheduling · Raspberry Pi clusters · K3s · Prometheus/Grafana · HPL benchmarking · TCP protocol design</div></div>
+      <div class="sk"><div class="h">LLM Engineering</div><div class="b">Azure OpenAI · grounded extraction · OCR pipelines (Tesseract) · validation &amp; guardrails · Streamlit apps</div></div>
+      <div class="sk"><div class="h">Embedded</div><div class="b">C/C++ · Assembly · Arduino · Raspberry Pi · RS485 · sensor integration · Keil µVision</div></div>
+      <div class="sk"><div class="h">RTL / FPGA</div><div class="b">Verilog · Vivado synthesis→DRC sign-off · ModelSim · Basys-3 deployment</div></div>
+      <div class="sk"><div class="h">Electronics</div><div class="b">Active filter design · op-amp circuits · LTSpice · ANSYS HFSS · SEMulator3D · PCB design (EasyEDA) &amp; fabrication · bench validation</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card rv">
+      <div class="sec-head" style="margin-bottom:8px"><span class="sec-num">06</span><h2>Get in touch</h2></div>
+      <p class="lead">Open to remote internships now, and full-time roles from mid-2027 — anywhere the
+      problem involves models meeting hardware.</p>
+      <div class="c-rows">
+        <a class="btn primary" href="mailto:sanjaysubramanyan1324@gmail.com">sanjaysubramanyan1324@gmail.com</a>
+        <button class="btn resume-dl" hidden>Résumé (PDF)</button>
+        <a class="btn" href="tel:+919840853213">+91 98408 53213</a>
+        <a class="btn" href="https://github.com/Cosmic-dorito" rel="noopener">github.com/Cosmic-dorito</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" id="page-edge">
+<header class="case-hero"><div class="wrap">
+  <a class="back" href="#/#work">← All work</a>
+  <h1 class="case">Adaptive task partitioning across distributed SBC nodes</h1>
+  <p class="case-sub">Final-year project (ongoing) — a runtime that turns a validated Raspberry Pi cluster
+  into an online scheduler for edge-AI workloads. With Shriyaank and S. Sahithya, guided by Dr. Binoy B. Nair.</p>
+  <div class="case-meta">
+    <span class="chip m">Status: ongoing</span><span class="chip">Team of 3 + guide</span>
+    <span class="chip">Report: 9 Aug 2026</span>
+  </div>
+</div></header>
+<div class="cnav"><div class="cnav-in">
+  <a href="#e-overview">Overview</a><a href="#e-problem">Problem</a><a href="#e-baseline">Baseline</a>
+  <a href="#e-design">Scheduler</a><a href="#e-results">Results</a><a href="#e-honest">What it doesn't show yet</a><a href="#e-next">Next</a>
+</div></div>
+
+<section class="cs-sec" id="e-overview"><div class="wrap">
+  <span class="cs-label">01 — Overview</span>
+  <h2>Make cheap boards behave like one machine that knows itself</h2>
+  <div class="body">
+  <p class="lead">Two phases. First, recreate a reference Raspberry Pi cluster stack — Ethernet fabric,
+  HPL/Linpack, K3s, Prometheus/Grafana — and measure everything, so the platform itself is validated
+  rather than assumed. Second, build a coordinator/worker runtime on top of it that assigns each inference
+  task to the node expected to finish it first.</p>
+  <div class="mrow">
+    <span class="mchip"><b>942 Mbit/s</b> fabric (Wi-Fi: 26)</span>
+    <span class="mchip"><b>0.31 ms</b> avg RTT</span>
+    <span class="mchip"><b>10.20 → 20.96</b> GFLOPS, 2.05×</span>
+    <span class="mchip"><b>105 / 105</b> task split, LBE <b>1.000</b></span>
+    <span class="mchip"><b>~74 µs</b> scheduler overhead/task</span>
+  </div>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="e-problem"><div class="wrap">
+  <span class="cs-label">02 — Problem</span>
+  <h2>Why scheduling on cheap edge hardware is its own problem</h2>
+  <div class="body">
+  <p>Cheap heterogeneous single-board computers on commodity Ethernet break the assumptions cluster
+  schedulers usually make. Node capability differs and drifts; fanless boards thermally throttle under
+  sustained load; and moving data is expensive enough that the network term belongs <em>inside</em> the
+  placement decision, not in a footnote. The scheduler has to learn what nodes can actually do — online,
+  from the tasks themselves — and it has to decide in microseconds, because on a fast fabric a slow
+  scheduler <em>is</em> the bottleneck.</p>
+  <p>The workload model is task-level partitioning: each webcam frame runs full MobileNet-v2 inference on
+  one node. Splitting a single inference across nodes would shuttle intermediate feature maps over
+  commodity Ethernet — the measured network baseline says that trade is a loss, so the design keeps every
+  task whole and lets placement do the work.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="e-baseline"><div class="wrap">
+  <span class="cs-label">03 — Validated substrate</span>
+  <h2>Measure the platform before trusting it</h2>
+  <div class="body">
+  <p>The cluster is dual-homed by design: the laptop stays on Wi-Fi for management, while all worker
+  traffic rides a dedicated Gigabit Ethernet data plane (10.0.0.x). The reference recreation follows Jeff
+  Geerling&rsquo;s public Pi-cluster automation and benchmark workflow, then verifies each layer manually.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Layer</th><th>Measured</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>Ethernet fabric</td><td class="num best">942 Mbit/s · 0.31 ms · 0 retr.</td><td>iperf3 + ping — the scheduler&rsquo;s communication term is grounded in this</td></tr>
+      <tr><td>Wi-Fi (same hardware)</td><td class="num">≈26 Mbit/s</td><td>36× slower — why the data plane is wired</td></tr>
+      <tr><td>HPL / Linpack, 1 × Pi 4</td><td class="num">10.20 GFLOPS</td><td>Reference figure for the board class is ≈11.9 — right order, validated</td></tr>
+      <tr><td>HPL / Linpack, 2 × Pi 4</td><td class="num best">20.96 GFLOPS · 2.05×</td><td>Near-linear scaling for a compute-bound kernel</td></tr>
+      <tr><td>K3s</td><td class="num">2 nodes Ready · 4 replicas 2+2</td><td>Orchestration and self-healing verified</td></tr>
+      <tr><td>Prometheus + Grafana</td><td class="num">live node dashboards</td><td>CPU, load, memory, disk, temperature during experiments</td></tr>
+    </tbody>
+    <caption>All values measured on this cluster and recorded in the project report (Aug 2026).</caption>
+  </table></div>
+  <p>Legacy distributed benchmarks carried forward as baselines: prime counting speeds up 1.696× → 1.578×
+  as workloads grow (coordination overhead is visible, then amortized), and a 4000×4000 matrix multiply
+  runs 1.32× faster distributed — a more honest proxy for AI-style arithmetic than embarrassingly parallel
+  primes.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="e-design"><div class="wrap">
+  <span class="cs-label">04 — Scheduler design</span>
+  <h2>AdaptiveMCT: minimum estimated completion time, learned online</h2>
+  <div class="body">
+  <div class="flow">
+    <div class="fnode"><b>Task</b><small>work W · data D</small></div><div class="farr"></div>
+    <div class="fnode"><b>Node state</b><small>capability C (EWMA) · queue · B, L · temp T</small></div><div class="farr"></div>
+    <div class="fnode"><b>EstFinish</b><small>(queue+compute)/C<sub>eff</sub> + comm</small></div><div class="farr"></div>
+    <div class="fnode"><b>Pick min</b><small>tie-window spread</small></div><div class="farr"></div>
+    <div class="fnode"><b>Execute</b><small>telemetry → CSV</small></div>
+  </div>
+  <p>For each task the coordinator estimates every candidate node&rsquo;s finish time — computation, current
+  backlog, communication cost from measured bandwidth and latency, and a thermal derating factor that
+  shrinks a node&rsquo;s effective capability past a warning threshold and floors it near throttle. The most
+  distinctive runtime feature is exactly that derating: fanless boards get protected before the silicon
+  throttles them.</p>
+  <ul class="tick">
+    <li>Wire protocol: length-prefixed JSON over TCP — every receive reads one whole message; the control
+    path stays deterministic.</li>
+    <li>Workers are plug-and-play: start the process, get profiled on real workload, join mid-run. Failed
+    tasks are requeued for self-healing.</li>
+    <li>Two baselines isolate the contribution: RoundRobin (ignores all state) and CapabilityWeightedStatic
+    (initial estimate, never adapts).</li>
+    <li>Capability C is learned online and smoothed with EWMA — no hand-assigned node scores anywhere.</li>
+  </ul>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="e-results"><div class="wrap">
+  <span class="cs-label">05 — Measured results</span>
+  <h2>The current cluster behaves exactly as it should</h2>
+  <div class="body">
+  <div class="tw"><table>
+    <thead><tr><th>Metric</th><th>Value</th><th>Implication</th></tr></thead>
+    <tbody>
+      <tr><td>Task split, 210-task MobileNet-v2 run</td><td class="num best">105 / 105</td><td>No node favored when cost estimates tie</td></tr>
+      <tr><td>Load-balance efficiency</td><td class="num best">1.000</td><td>Tie-spreading logic works</td></tr>
+      <tr><td>Scheduler overhead</td><td class="num">~74 µs / task</td><td>Light enough for real-time use — decisions in microseconds, not milliseconds</td></tr>
+      <tr><td>Network + scheduling overhead</td><td class="num">~1.4 ms (~2%)</td><td>Communication is not the bottleneck on this workload</td></tr>
+      <tr><td>Learned node capabilities</td><td class="num">within 1.5%</td><td>Identical hardware converges to a natural tie</td></tr>
+    </tbody>
+  </table></div>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="e-honest"><div class="wrap">
+  <span class="cs-label">06 — What this doesn't show yet</span>
+  <h2>On identical nodes, the adaptive policy ties the baselines — by design</h2>
+  <div class="body">
+  <div class="honest"><div class="h">Read this before the numbers above</div>
+    <p>The current measured platform is two <em>identical, cool</em> Pi 4 nodes. On that hardware there is
+    no heterogeneity to exploit, so AdaptiveMCT correctly ties RoundRobin and the static baseline — a
+    validation of scheduler neutrality, not evidence of advantage. The expected win appears when Pi 3
+    nodes introduce genuine capability differences and when thermal stress activates the derating path.
+    Those experiments are pending, and the report says so explicitly.</p>
+  </div>
+  <p>This is deliberate scientific sequencing: establish a correct, perfectly balanced baseline first, so
+  any separation measured later is attributable to the policy rather than to platform noise.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="e-next"><div class="wrap">
+  <span class="cs-label">07 — Roadmap</span>
+  <h2>The experiments that separate the policies</h2>
+  <div class="body">
+  <ul class="tick">
+    <li>Add Raspberry Pi 3 nodes — genuine heterogeneity, non-trivial policy separation.</li>
+    <li>Thermal workload — validate proactive derating on fanless boards where throttling is physically real.</li>
+    <li>Communication-heavy tasks — force the network term to earn its place in the cost model.</li>
+    <li>Ablations (thermal / communication / online-learning off) and multi-run statistics with variance.</li>
+    <li>Power measurement (USB meter or INA219) → energy-aware scheduling and GFLOPS/W.</li>
+  </ul>
+  </div>
+</div></section>
+</div>
+
+<div class="page" id="page-thermal">
+<header class="case-hero"><div class="wrap">
+  <a class="back" href="#/#work">← All work</a>
+  <h1 class="case">When do physics-informed neural networks help?</h1>
+  <p class="case-sub">Sparse on-chip thermal field reconstruction under power-model and nonlinear-leakage
+  uncertainty — with S. Sahithya, M. Suprithi and J. P. Anitha. Manuscript, August 2026; all code, seeds
+  and metrics released.</p>
+  <div class="case-meta">
+    <span class="chip m">Research manuscript</span>
+    <span class="chip"><a href="https://github.com/Cosmic-dorito/thermal-pinn" rel="noopener">github.com/Cosmic-dorito/thermal-pinn</a></span>
+  </div>
+</div></header>
+<div class="cnav"><div class="cnav-in">
+  <a href="#t-q">The question</a><a href="#t-s1">Study 1</a><a href="#t-s2">Study 2</a><a href="#t-s3">Study 3</a>
+  <a href="#t-place">Sensor placement</a><a href="#t-rule">Decision rule</a><a href="#t-lim">Limitations</a>
+</div></div>
+
+<section class="cs-sec" id="t-q"><div class="wrap">
+  <span class="cs-label">01 — The question</span>
+  <h2>Not &ldquo;are PINNs good&rdquo; — <em>when</em> do they earn their compute?</h2>
+  <div class="body">
+  <p class="lead">A deployed chip exposes a handful of noisy on-die sensors, and the physics model driving
+  any reconstruction is itself wrong: the power map is a nominal estimate, and leakage rises nonlinearly
+  with temperature. The chip-thermal PINN literature demonstrates accurate forward analysis — but rarely
+  compares against the classical alternative: solve the nominal physics, fit a Gaussian process to the
+  sensor residual, add it back. This work stages that comparison honestly, three ways.</p>
+  <div class="mrow">
+    <span class="mchip">2.5-D steady-state model · 256×256 FDM truth</span>
+    <span class="mchip">6-block 95 W chip + published 19-block Alpha 21264 (EV6) floorplan</span>
+    <span class="mchip">σ = 0.5 K sensor noise · 5 seeds everywhere</span>
+  </div>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="t-s1"><div class="wrap">
+  <span class="cs-label">02 — Study 1 · linear regime</span>
+  <h2>Under smooth power-model error, classical assimilation wins</h2>
+  <div class="body">
+  <div class="tw"><table>
+    <thead><tr><th>Method (N = 20 sensors)</th><th>ρ = 0%</th><th>5%</th><th>10%</th><th>15%</th><th>20%</th></tr></thead>
+    <tbody>
+      <tr><td>PINN</td><td class="num">0.424</td><td class="num">0.436</td><td class="num">0.483</td><td class="num">0.506</td><td class="num">0.601</td></tr>
+      <tr><td>Physics-mean GP (assimilation)</td><td class="num best">0.214</td><td class="num best">0.345</td><td class="num best">0.475</td><td class="num">0.629</td><td class="num best">0.574</td></tr>
+      <tr><td>Physics only (no sensors)</td><td class="num">1.086</td><td class="num">2.407</td><td class="num">5.552</td><td class="num">8.555</td><td class="num">11.617</td></tr>
+    </tbody>
+    <caption>Field MAE [K] vs per-block power mismatch ρ, mean over five seeds. Best per column in accent.</caption>
+  </table></div>
+  <p>The GP matches or beats the PINN at four of five mismatch levels — while running in under a second on
+  a CPU against minutes on a GPU. Two to three orders of magnitude in compute for the same accuracy. In
+  the smooth, linear regime the network confers no benefit, and the paper says so plainly.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="t-s2"><div class="wrap">
+  <span class="cs-label">03 — Study 2 · nonlinear leakage</span>
+  <h2>Make the physics nonlinear and sensing scarce — the verdict flips</h2>
+  <div class="body">
+  <p>Temperature-dependent leakage is a positive feedback: heat raises leakage, which raises heat. Model it
+  as an unknown coefficient β, drop to eight sensors, and the PINN — treating β as a <em>trainable
+  parameter</em> constrained through the coupled residual — holds nearly flat (0.82–1.09 K) while pure
+  physics degrades eighteen-fold and even the GP triples (0.40 → 1.34 K). The curves cross near β* ≈ 0.10.</p>
+  <div class="mrow">
+    <span class="mchip">PINN MAE <b>0.82–1.09 K</b> across β* 0→0.12</span>
+    <span class="mchip">β̂ recovered: <b>0.001→0.090</b> tracking truth monotonically</span>
+    <span class="mchip">PhysGP: 0.40→<b>1.34 K</b> · physics-only: <b>19.3 K</b></span>
+  </div>
+  <p>Uniquely, the PINN also returns a physical quantity no baseline can produce: the leakage coefficient
+  itself, recovered from eight noisy sensors while reconstructing the field. Robustness held under an
+  independent bilinear FEM reference (margin widens: 0.95 vs 1.33 K), doubled sensor noise (β̂ within
+  ±0.003), and a five-member deep ensemble whose predictive σ brackets actual error.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="t-s3"><div class="wrap">
+  <span class="cs-label">04 — Study 3 · complex floorplans</span>
+  <h2>A vanilla PINN collapses on the real floorplan — so embed the physics</h2>
+  <div class="body">
+  <p>On the published 19-block EV6 layout the freeform PINN fails outright — spectral-bias collapse to
+  ≈8 K MAE even with the physics exactly known. The fix is architectural: precompute each block&rsquo;s
+  Green&rsquo;s-function response once, write the field as a per-block Green&rsquo;s expansion, and let
+  leakage live on the same physical basis, solved to self-consistency inside the forward pass
+  (SC-GB-PINN). Hard physics constraints, N<sub>blocks</sub>+1 free parameters.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Method (β* = 0.12, FEM truth)</th><th>SimpleSix</th><th>EV6 (19 blocks)</th></tr></thead>
+    <tbody>
+      <tr><td>Physics-mean GP</td><td class="num">1.32</td><td class="num">2.57</td></tr>
+      <tr><td>Vanilla PINN</td><td class="num">1.41</td><td class="num">8.04</td></tr>
+      <tr><td>GB-PINN (prior only)</td><td class="num">1.20</td><td class="num">2.34</td></tr>
+      <tr><td>SC-GB-PINN</td><td class="num best">1.01</td><td class="num best">1.01</td></tr>
+    </tbody>
+    <caption>Field MAE [K], five seeds. SC-GB-PINN: 2.3× better than next-best on EV6; β̂ = 0.12 / 0.10 (true 0.12).</caption>
+  </table></div>
+  <div class="honest"><div class="h">Kept deliberately in the paper</div>
+    <p>At β* = 0 the SC-GB-PINN is <em>not</em> the best method (0.57–0.76 K vs 0.31–0.40 K for GP and
+    GB-PINN) — its leakage machinery is dead weight when there is nothing to infer. The win is
+    regime-specific, and reporting where a method loses is what makes the comparison believable.</p>
+  </div>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="t-place"><div class="wrap">
+  <span class="cs-label">05 — Where to put the sensors</span>
+  <h2>The same basis answers a second question, for free</h2>
+  <div class="body">
+  <p>Because SC-GB-PINN reduces reconstruction to a few per-block parameters, its sensitivity at any
+  location is available in closed form — so choosing the eight positions that maximize the Bayesian
+  D-optimal criterion needs no training at all. On EV6 that drives error to <b>0.60 K</b> — the lowest in
+  the work — and 0.97 K on the simple chip, while shrinking variance roughly six-fold. And a cautionary measured result: clustering all
+  sensors on the hotspots is catastrophic for the statistical baseline (19→24 K), because it starves the
+  cool interior. Coverage, not intuition, matters — the criterion balances it automatically.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="t-rule"><div class="wrap">
+  <span class="cs-label">06 — Decision rule</span>
+  <h2>What a practitioner should actually do</h2>
+  <div class="body">
+  <ul class="tick">
+    <li><b>Smooth model error, adequate sensing</b> → physics-mean Gaussian process. Equal accuracy at
+    negligible cost, no training, trivial to deploy.</li>
+    <li><b>Strong nonlinearity, sparse sensing, or a parameter you need</b> → PINN. Stays accurate where
+    residual-smoothing fails and returns an interpretable coefficient as a by-product.</li>
+    <li><b>Complex multi-hotspot floorplans</b> → embed the physics in the architecture (Green&rsquo;s
+    basis); a freeform network cannot fit the field at all.</li>
+  </ul>
+  <p>The mechanism generalizes: a smoother treats physics as fixed and interpolates what sensors leave
+  over; a PINN reshapes the physics through a trained parameter. Flexibility is dead weight exactly when
+  classical methods already fit the physics.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="t-lim"><div class="wrap">
+  <span class="cs-label">07 — Limitations</span>
+  <h2>Stated plainly, as in the paper</h2>
+  <div class="body">
+  <ul class="tick">
+    <li>2-D and simulation-based — a real published processor floorplan, cross-checked against an
+    independent FEM solver, but not measured silicon or a 3-D package.</li>
+    <li>Assumes a known floorplan and nominal power map — a design-time estimator, not a black-box learner.</li>
+    <li>The leakage law is a controlled positive-feedback model; temperatures exceed realistic junction
+    limits to make the nonlinearity visible.</li>
+    <li>No runtime speedup is claimed; reconstruction is treated as estimation.</li>
+  </ul>
+  </div>
+</div></section>
+</div>
+
+<div class="page" id="page-rov">
+<header class="case-hero"><div class="wrap">
+  <a class="back" href="#/#work">← All work</a>
+  <h1 class="case">Mini ROV &amp; a light link that refuses to give up</h1>
+  <p class="case-sub">Research internship, Deep Sea Technology Group, National Institute of Ocean
+  Technology (Ministry of Earth Sciences), Chennai — April 2026, with Rithish K, guided by
+  Mr. R. Ramesh, Scientist-F.</p>
+  <div class="case-meta"><span class="chip m">Two projects, one month</span><span class="chip">Prototype · surface-tested</span><span class="chip"><a href="https://drive.google.com/file/d/1qjk_MVtROHnxVdRq7eMiOrakbFuoPP5a/view" rel="noopener">Demo video ↗</a></span></div>
+</div></header>
+<div class="cnav"><div class="cnav-in">
+  <a href="#r-rov">The vehicle</a><a href="#r-arch">Architecture</a><a href="#r-optical">Optical link</a>
+  <a href="#r-proof">Proof</a><a href="#r-lim">Limitations</a>
+</div></div>
+
+<section class="cs-sec" id="r-rov"><div class="wrap">
+  <span class="cs-label">01 — The vehicle</span>
+  <h2>Propulsion, sensing, communication and control in one platform</h2>
+  <div class="body">
+  <p class="lead">The Mini ROV integrates Blue Robotics T200 thrusters with ESCs, a depth/pressure sensor,
+  an Xsens motion sensor, and a Raspberry Pi 5 controller inside a 4-inch pressure housing — talking to a
+  laptop operator station over RS485, chosen for robust long-distance wired communication.</p>
+  <div class="fig2">
+    <figure class="fig"><img style="aspect-ratio:582/973" src="assets/rov-front.jpg" alt="Mini ROV: T200 thrusters mounted above the transparent 4-inch pressure housing, tether coiled behind" loading="lazy">
+      <figcaption>The prototype: thrusters, frame, and the sealed electronics housing. Photo from the internship report.</figcaption></figure>
+    <figure class="fig"><img style="aspect-ratio:582/1063" src="assets/steth-fra.jpg" alt="Inside the pressure housing: Raspberry Pi 5, wiring and power electronics" loading="lazy">
+      <figcaption>Inside the housing: Pi 5, buck-converted power (20 V bus for thrusters), sensor wiring.</figcaption></figure>
+  </div>
+  <p>My work was hardware integration, software interfacing and the operator UI: acquiring depth and
+  motion data on the Pi, streaming telemetry to the laptop interface in real time, and carrying operator
+  commands back down to the propulsion system.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="r-arch"><div class="wrap">
+  <span class="cs-label">02 — System architecture</span>
+  <h2>Four subsystems, deliberately modular</h2>
+  <div class="body">
+  <div class="flow">
+    <div class="fnode"><b>Sensors</b><small>depth/pressure · Xsens motion</small></div><div class="farr"></div>
+    <div class="fnode"><b>Raspberry Pi 5</b><small>acquisition · control</small></div><div class="farr"></div>
+    <div class="fnode"><b>RS485 link</b><small>bidirectional telemetry</small></div><div class="farr"></div>
+    <div class="fnode"><b>Operator UI</b><small>live readouts · commands</small></div>
+  </div>
+  <p>Each subsystem was integrated independently against the same interfaces — which is what made a
+  one-month build feasible, and what the report credits for maintainability. Power design: a 20 V source
+  for the thrusters through ESCs, with the Pi 5 fed by a buck converter so control stays stable while
+  motors draw current.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="r-optical"><div class="wrap">
+  <span class="cs-label">03 — The optical link</span>
+  <h2>Visible light as a wire — then make it survive corruption</h2>
+  <div class="body">
+  <p>The companion project: optical wireless communication on Arduino Uno — an LED transmitter and
+  photodiode receiver on AltSoftSerial, run deliberately slow (300 bps on the optical channel) for
+  stability. The interesting part is the fault tolerance added on top:</p>
+  <ul class="tick">
+    <li><b>Triple-redundancy encoding</b> — every byte transmitted three times.</li>
+    <li><b>Majority-vote decoding</b> with a correction mask that records exactly which bits were repaired.</li>
+    <li><b>Timeouts and automatic retransmission</b> — up to five attempts before giving up.</li>
+  </ul>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="r-proof"><div class="wrap">
+  <span class="cs-label">04 — Proof it works</span>
+  <h2>Watch it fail twice and still deliver</h2>
+  <div class="body">
+  <p>From the loopback test log in the report — ambient interference corrupts the message on two attempts;
+  bit-level correction plus retransmission recovers it exactly on the third:</p>
+  <div class="term"><div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="c">Optical loopback with automatic retransmission on error</span>
+--- New message: "Rithish" ---
+Attempt 1/5
+  Char 0 corrected bits: 4 6 · Char 1: 3 5 6 · Char 2: 5 6 7
+  <span class="r">Mismatch: sent="Rithish", received="Ra√ø√ø√ø"</span>
+<span class="y">&gt;&gt;&gt; Retransmitting in 200 ms...</span>
+Attempt 2/5
+  Char 0: 1 6 · Char 2: 2 3 4 7 · Char 3: 6 7 · Char 4: 4
+  <span class="r">Mismatch: sent="Rithish", received="0i00000"</span>
+<span class="y">&gt;&gt;&gt; Retransmitting in 200 ms...</span>
+Attempt 3/5
+  Char 4 corrected bits: 0 · Char 6 corrected bits: 3
+<span class="g">&gt;&gt;&gt; SUCCESS: Message received correctly.</span>
+<span class="g">Message successfully transmitted after 3 attempt(s). Final received: "Rithish"</span></pre></div>
+  <p>The log makes the design case better than prose could: single-shot transmission fails in ambient light, and
+  the redundancy + ARQ layer turns an unreliable channel into a reliable one.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="r-lim"><div class="wrap">
+  <span class="cs-label">05 — Limitations</span>
+  <h2>What was and wasn't tested</h2>
+  <div class="body">
+  <ul class="tick">
+    <li>Underwater facilities weren&rsquo;t available during the internship — the ROV was validated by
+    surface-level functional testing: all subsystems integrated, telemetry and commands verified end to end.
+    Underwater performance was not evaluated.</li>
+    <li>The optical link is short-range, alignment-sensitive, and susceptible to ambient light — measured
+    honestly and listed in the report; the redundancy layer is the mitigation, not a cure.</li>
+  </ul>
+  </div>
+</div></section>
+</div>
+
+<div class="page" id="page-patent">
+<header class="case-hero"><div class="wrap">
+  <a class="back" href="#/#work">← All work</a>
+  <h1 class="case">Patent intelligence, engineered like a pipeline — not a prompt</h1>
+  <p class="case-sub">AI/ML internship, TVS Motor Company, Hosur — May–June 2026. An LLM-based system that
+  turns Indian patent PDFs into structured engineering intelligence. Deployed internally for TVSM R&amp;D teams.</p>
+  <div class="case-meta"><span class="chip m">Deployed internally</span><span class="chip">Azure OpenAI · GPT-4o-mini</span></div>
+</div></header>
+<div class="cnav"><div class="cnav-in">
+  <a href="#p-problem">Problem</a><a href="#p-arch">Architecture</a><a href="#p-ocr">OCR &amp; edge cases</a>
+  <a href="#p-guard">Guardrails</a><a href="#p-ship">Shipping</a>
+</div></div>
+
+<section class="cs-sec" id="p-problem"><div class="wrap">
+  <span class="cs-label">01 — Problem</span>
+  <h2>R&amp;D teams read patents one PDF at a time</h2>
+  <div class="body">
+  <p class="lead">Patent PDFs arrive as messy, inconsistent documents — some born-digital, some scanned,
+  some design-only with no utility claim at all. Engineers need the same things from each: metadata,
+  the independent claims, what the invention actually does, its benefits and failure modes, and which
+  engineering team should see it. Doing that manually doesn&rsquo;t scale; doing it with a single naive
+  LLM prompt hallucinates.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="p-arch"><div class="wrap">
+  <span class="cs-label">02 — Architecture</span>
+  <h2>Deterministic where possible, grounded LLM where necessary</h2>
+  <div class="body">
+  <div class="flow">
+    <div class="fnode"><b>PDF</b><small>text + OCR arbitration</small></div><div class="farr"></div>
+    <div class="fnode"><b>Deterministic layer</b><small>regex metadata · sections · claims split · drawings</small></div><div class="farr"></div>
+    <div class="fnode"><b>Evidence cards</b><small>parallel grounded extraction</small></div><div class="farr"></div>
+    <div class="fnode"><b>LLM fields</b><small>summary · benefits · failure modes · guidelines</small></div><div class="farr"></div>
+    <div class="fnode"><b>Validate + repair</b><small>then team routing → Excel</small></div>
+  </div>
+  <p>The split is the design decision: anything with a reliable textual signature — application numbers,
+  dates, assignees, claim boundaries — is extracted deterministically and never touches the model. The LLM
+  works only on grounded evidence windows, generates the analytical fields in parallel, and every output
+  passes a validation gate (word counts, no reference numerals, no comparator conflicts with evidence, no
+  prompt leakage) with an automatic repair loop when a rule trips. Typical run: 12–20 LLM calls,
+  30–60 seconds per patent.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="p-ocr"><div class="wrap">
+  <span class="cs-label">03 — The hard 20%</span>
+  <h2>Scanned patents, design patents, and bracket-format claims</h2>
+  <div class="body">
+  <ul class="tick">
+    <li><b>Full-document OCR arbitration</b>: scanned pages are re-OCR&rsquo;d at 300 DPI and the cleaner of
+    embedded vs OCR text wins by a garbage-ratio metric — fixing noisy embedded text (&ldquo;mbtbtcycle
+    comj^rising&rdquo; → &ldquo;motorcycle comprising&rdquo;) and recovering image-only claim pages.</li>
+    <li><b>A cheap 150-DPI probe</b> distinguishes scanned <em>text</em> pages (need OCR) from drawing pages
+    (don&rsquo;t) — so drawing-heavy patents stay fast and scanned pages stop being misclassified as drawings.</li>
+    <li><b>Design/ornamental patents</b> are detected and routed correctly — extracting the ornamental-design
+    statement instead of failing on a missing utility claim.</li>
+    <li><b>WIPO/JP bracket claim formats</b> (&ldquo;[Claim 1]&rdquo;, &ldquo;Scope of Claims&rdquo;) and a
+    strong-anchor rule that picks the last real claim heading, so description pages can&rsquo;t win.</li>
+  </ul>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="p-guard"><div class="wrap">
+  <span class="cs-label">04 — Guardrails</span>
+  <h2>The LLM cleans OCR noise — inside a cage</h2>
+  <div class="body">
+  <p>Claims are legal text, so the pipeline keeps the verbatim claim untouched and adds a separate
+  OCR-cleaned rendering — produced by the LLM but accepted only if it passes safety checks: similarity to
+  the raw text ≥ 0.75, no contiguous edit longer than 45 characters, at most one invented numeral. Fail
+  any check and the system falls back to raw. Every analytical field ships with a confidence score and
+  evidence count, and review flags mark anything a human should re-check.</p>
+  <div class="notebox"><div class="h">Why this matters</div>
+  <p>The system is designed to be <em>auditable</em>: a reviewer can see what was extracted
+  deterministically, what the model wrote, from which evidence, at what confidence — and what tripped a
+  flag. That&rsquo;s the difference between a demo and a tool a company actually uses.</p></div>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="p-ship"><div class="wrap">
+  <span class="cs-label">05 — Shipping</span>
+  <h2>Deployment is a feature</h2>
+  <div class="body">
+  <ul class="tick">
+    <li>Streamlit batch UI: multi-PDF upload, live progress, per-patent result cards with drawing previews,
+    consolidated Excel download, search and status filters.</li>
+    <li>One-command installer for Windows and macOS that provisions Python dependencies <em>and</em> the
+    Tesseract OCR binary — the difference between &ldquo;works on my machine&rdquo; and works on the
+    R&amp;D team&rsquo;s machines.</li>
+    <li>Validated end-to-end against a hand-curated ground-truth set of real Indian patent filings,
+    including scanned and design patents; independent-claim counts verified per document.</li>
+    <li>Automatic routing across engineering team categories (thermal, battery, safety, power electronics,
+    controls…) by weighted keyword scoring.</li>
+  </ul>
+  <p>Deployed internally for TVSM R&amp;D teams. Details that are TVS-internal — endpoints, prompts, the
+  full output schema — stay internal; what&rsquo;s described here is the engineering approach.</p>
+  </div>
+</div></section>
+</div>
+
+<div class="page" id="page-bearing">
+<header class="case-hero"><div class="wrap">
+  <a class="back" href="#/#work">← All work</a>
+  <h1 class="case">Bearing fault diagnosis with frequency-domain attention</h1>
+  <p class="case-sub">FD-MRA: frequency-domain multi-resolution attention for vibration-based fault
+  classification under variable load, fused with a time-domain CNN.</p>
+  <div class="case-meta"><span class="chip m">99.82% accuracy</span><span class="chip m">0.8 ms inference</span><span class="chip">4,949 hold-out samples</span></div>
+</div></header>
+<div class="cnav"><div class="cnav-in">
+  <a href="#b-problem">Problem</a><a href="#b-arch">Architecture</a><a href="#b-results">Results</a>
+  <a href="#b-eval">Evaluation</a><a href="#b-learn">What I learned</a>
+</div></div>
+
+<section class="cs-sec" id="b-problem"><div class="wrap">
+  <span class="cs-label">01 — Problem</span>
+  <h2>Fault signatures move when the load changes</h2>
+  <div class="body">
+  <p class="lead">Bearing faults write themselves into vibration spectra — but the writing shifts with
+  operating load. A model that memorizes one load&rsquo;s spectral fingerprint collapses on another. The
+  goal is a classifier that attends to fault-characteristic frequency structure robustly across 0–3 HP,
+  and runs fast enough to live at the machine.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="b-arch"><div class="wrap">
+  <span class="cs-label">02 — Architecture</span>
+  <h2>Let the model learn <em>where in the spectrum</em> to look</h2>
+  <div class="body">
+  <div class="flow">
+    <div class="fnode"><b>Vibration signal</b><small>raw window</small></div><div class="farr"></div>
+    <div class="fnode"><b>Two streams</b><small>1-D time CNN · frequency branch</small></div><div class="farr"></div>
+    <div class="fnode"><b>FD-MRA</b><small>multi-resolution attention · RoPE · trainable freq masks</small></div><div class="farr"></div>
+    <div class="fnode"><b>Fusion</b><small>256-D bottleneck</small></div><div class="farr"></div>
+    <div class="fnode"><b>Class + latency</b><small>0.8 ms post-bottleneck</small></div>
+  </div>
+  <p>The frequency branch is the contribution: attention at multiple spectral resolutions, rotary position
+  embeddings so harmonic <em>spacing</em> (not absolute bin position) carries the signal, and trainable
+  frequency masks that learn which bands matter — instead of hand-picking envelope bands per fault type.
+  Measured post-bottleneck inference is 0.8 ms, comfortably edge-deployable.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="b-results"><div class="wrap">
+  <span class="cs-label">03 — Results</span>
+  <h2>Four fault classes, across every load</h2>
+  <div class="body">
+  <div class="mrow">
+    <span class="mchip">Accuracy <b>99.82%</b></span>
+    <span class="mchip">Macro-F1 <b>0.9982</b></span>
+    <span class="mchip"><b>4,949</b> hold-out samples</span>
+    <span class="mchip">Inference <b>0.8 ms</b></span>
+  </div>
+  <p>Four fault classes under 0&ndash;3 HP variable load. The load variation is the part that matters:
+  it is the condition where naive detectors degrade, because the spectral signature shifts for
+  entirely benign reasons and a model that memorised one load&rsquo;s fingerprint has nothing left to
+  stand on.</p>
+  <p>The 0.8 ms post-bottleneck figure is what makes it deployable — fast enough to run at the
+  machine rather than shipping vibration data to a server and waiting on a round trip.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="b-eval"><div class="wrap">
+  <span class="cs-label">04 — Evaluation</span>
+  <h2>Cross-load, not cross-validated-on-itself</h2>
+  <div class="body">
+  <ul class="tick">
+    <li>Four fault classes evaluated across 0&ndash;3 HP variable load, on a held-out set of
+    4,949 samples.</li>
+    <li>FD-MRA benchmarked against the time-domain CNN stream alone, isolating what the
+    frequency branch contributes rather than reporting the fused number by itself.</li>
+    <li>Ongoing work: leave-one-load-out validation, where the model trains on some loads and is
+    tested on a load it has never seen — the harder question of whether the learned frequency
+    masks generalise across operating conditions.</li>
+  </ul>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="b-learn"><div class="wrap">
+  <span class="cs-label">05 — What I learned</span>
+  <h2>Let the model choose the band</h2>
+  <div class="body">
+  <p>The conventional approach to bearing diagnosis picks envelope bands by hand from the fault
+  characteristic frequencies — which works until the load shifts and those bands move. Making the
+  masks trainable, and using rotary embeddings so harmonic <em>spacing</em> carries the signal rather
+  than absolute bin position, moves that choice from the engineer&rsquo;s prior into the data.</p>
+  <p>The other lasting output is a habit: evaluation design is part of the architecture. Condition-aware
+  partitions and no window overlap across splits are now my defaults, and a surprisingly high score is
+  something I treat as a bug until I have proven otherwise.</p>
+  </div>
+</div></section>
+</div>
+
+<div class="page" id="page-steth">
+<header class="case-hero"><div class="wrap">
+  <a class="back" href="#/#work">← All work</a>
+  <h1 class="case">A stethoscope with no processor in it</h1>
+  <p class="case-sub">Open Laboratory project, Amrita ECE — with S. Sahithya and Shriyaank R. Fully analog
+  auscultation: capture, amplify, notch out the mains, split into physiological bands, sum, and listen.</p>
+  <div class="case-meta"><span class="chip m">Completed · exhibited Mar 2026</span><span class="chip">PCB designed &amp; validated</span></div>
+</div></header>
+<div class="cnav"><div class="cnav-in">
+  <a href="#s-why">Why analog</a><a href="#s-chain">Signal chain</a><a href="#s-meas">Measured</a><a href="#s-learn">Learned</a>
+</div></div>
+
+<section class="cs-sec" id="s-why"><div class="wrap">
+  <span class="cs-label">01 — Why analog</span>
+  <h2>The constraint is the point</h2>
+  <div class="body">
+  <p class="lead">Digital stethoscopes solve auscultation with microcontrollers — adding cost, complexity
+  and a power budget. The design brief here: isolate heart (30–140 Hz), lung (140–400 Hz) and murmur
+  (400–1000 Hz) bands, suppress 50 Hz mains interference, and drive headphones — using nothing
+  programmable. Every behavior must come from component values.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="s-chain"><div class="wrap">
+  <span class="cs-label">02 — Signal chain</span>
+  <h2>Chestpiece to headphones, stage by stage</h2>
+  <div class="body">
+  <div class="flow">
+    <div class="fnode"><b>Electret mic</b><small>acoustically coupled chestpiece</small></div><div class="farr"></div>
+    <div class="fnode"><b>Gain + buffer</b><small>op-amp stages</small></div><div class="farr"></div>
+    <div class="fnode"><b>50 Hz notch</b><small>twin-T, R=33 kΩ C=0.1 µF</small></div><div class="farr"></div>
+    <div class="fnode"><b>3 × band paths</b><small>4th-order Sallen–Key HP+LP</small></div><div class="farr"></div>
+    <div class="fnode"><b>Switch + sum</b><small>→ ≥32 Ω headphones</small></div>
+  </div>
+  <p>Each band is an independent path: a 4th-order Sallen–Key high-pass into a 4th-order low-pass, values
+  derived by hand (f<sub>c</sub> = 1/2πRC — e.g. 30 Hz → 5.3 kΩ, 140 Hz → 11.4 kΩ, 400 Hz → 3.98 kΩ,
+  1 kHz → 1.59 kΩ at 0.1 µF), built around TL072/LM324 op-amps. Slide switches route any combination of
+  bands into a two-stage summing amplifier; the output buffer drives headphones directly, so no separate
+  power amplifier exists to add its own noise.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="s-meas"><div class="wrap">
+  <span class="cs-label">03 — Measured</span>
+  <h2>Designed vs obtained, on a bench FRA</h2>
+  <div class="body">
+  <div class="tw"><table>
+    <thead><tr><th>Path</th><th>Designed band</th><th>Obtained band</th><th>Center</th><th>Gain</th></tr></thead>
+    <tbody>
+      <tr><td>Heart</td><td class="num">30 – 140 Hz</td><td class="num">34 – 160 Hz</td><td class="num">73.7 Hz</td><td class="num">~24 dB</td></tr>
+      <tr><td>Lung</td><td class="num">140 – 400 Hz</td><td class="num">144 – 432 Hz</td><td class="num">249.4 Hz</td><td class="num">~12 dB</td></tr>
+      <tr><td>Murmur</td><td class="num">400 – 1000 Hz</td><td class="num">432 – 1060 Hz</td><td class="num">689.4 Hz</td><td class="num">~12.8 dB</td></tr>
+      <tr><td>Notch</td><td class="num">50 Hz target</td><td class="num best">49.8 Hz</td><td class="num">—</td><td class="num">−12.6 dB</td></tr>
+    </tbody>
+    <caption>Oscilloscope frequency-response analysis of the built hardware, from the project poster.</caption>
+  </table></div>
+  <figure class="fig"><img style="aspect-ratio:1024/768" src="assets/rov-pod.jpg" alt="Bench oscilloscope frequency response analysis: gain and phase versus frequency for a stethoscope band" loading="lazy">
+    <figcaption>Gain/phase vs frequency, measured on the bench — one of the band paths under FRA sweep.</figcaption></figure>
+  <p>Obtained corners run a few percent above design across the board — consistent with component
+  tolerance — while band ordering, isolation and the notch all land where the arithmetic said they would.
+  Simulation first; then the oscilloscope has the final word.</p>
+  </div>
+</div></section>
+
+<section class="cs-sec" id="s-learn"><div class="wrap">
+  <span class="cs-label">04 — Learned</span>
+  <h2>Filters on paper vs filters in copper</h2>
+  <div class="body">
+  <p>The gap between designed and obtained corners is the education: real capacitors and resistors move
+  your poles, and layout choices — ground pour, short high-gain traces, separated analog return — decide
+  whether a high-gain audio chain hums or stays quiet. The final validation was the honest kind: a live
+  acoustic end-to-end test, band switch by band switch.</p>
+  </div>
+</div></section>
+</div>
+
+<footer><div class="wrap">
+  <div class="fin">
+    <span>© 2026 Sanjay Subramanyan</span>
+    <a href="mailto:sanjaysubramanyan1324@gmail.com">sanjaysubramanyan1324@gmail.com</a>
+    <a href="https://github.com/Cosmic-dorito" rel="noopener">GitHub</a>
+    <a href="#/#contact">Contact</a>
+  </div>
+  <div class="honest-line">Every number on this site traces to a project report, paper, poster, or
+  synthesis log — available on request. Nothing is estimated upward.</div>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+/* ---------- theme ---------- */
+var root=document.documentElement, btn=document.getElementById('themeBtn');
+var TK='sanjay-theme', order=['auto','light','dark'];
+function getPref(){try{return localStorage.getItem(TK)||'auto'}catch(e){return 'auto'}}
+function apply(p){
+  if(p==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',p)}
+  if(btn)btn.textContent=p.toUpperCase();
+}
+function setPref(p){try{localStorage.setItem(TK,p)}catch(e){} apply(p)}
+apply(getPref());
+if(btn)btn.addEventListener('click',function(){
+  var i=(order.indexOf(getPref())+1)%order.length; setPref(order[i]);
+});
+
+/* ---------- router ---------- */
+var pages=['home','edge','thermal','rov','patent','bearing','steth'];
+function route(){
+  var h=location.hash||'#/';
+  var m=h.match(/^#\/([a-z]*)/); var p=(m&&m[1])||'home';
+  if(pages.indexOf(p)<0)p='home';
+  pages.forEach(function(id){
+    var el=document.getElementById('page-'+id);
+    if(el)el.classList.toggle('on',id===p);
+  });
+  /* in-page anchor after page switch */
+  var anchor=h.split('#').length>2?h.substring(h.lastIndexOf('#')+1):null;
+  if(p!=='home'){window.scrollTo(0,0);}
+  if(anchor){
+    var t=document.getElementById(anchor);
+    if(t)requestAnimationFrame(function(){t.scrollIntoView({block:'start'});});
+  }else if(p==='home'&&h.indexOf('#',2)<0){window.scrollTo(0,0);}
+  reveal(); wireCnav();
+  var T={home:'Sanjay Subramanyan \u2014 AI/ML, Embedded Systems & Edge Computing',edge:'Adaptive Edge Scheduling — Sanjay Subramanyan',
+    thermal:'When Do PINNs Help? — Sanjay Subramanyan',rov:'Mini ROV & Optical Link — Sanjay Subramanyan',
+    patent:'Patent Intelligence Pipeline — Sanjay Subramanyan',bearing:'Bearing Fault Diagnosis — Sanjay Subramanyan',
+    steth:'Analog Stethoscope — Sanjay Subramanyan'};
+  document.title=T[p]||T.home;
+}
+window.addEventListener('hashchange',route);
+
+/* home section links like #/#work */
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#/#"]');
+  if(!a)return;
+  e.preventDefault();
+  var id=a.getAttribute('href').slice(3);
+  if(location.hash&&location.hash!=='#/'&&!location.hash.startsWith('#/#')){location.hash='#/';}
+  requestAnimationFrame(function(){
+    route.homePending=null;
+    var t=document.getElementById(id);
+    if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    history.replaceState(null,'','#/#'+id);
+  });
+});
+
+/* ---------- reveal ---------- */
+var io=null;
+function reveal(){
+  var els=document.querySelectorAll('.page.on .rv:not(.in)');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(el){el.classList.add('in')}); return;
+  }
+  if(!io){io=new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});}
+  els.forEach(function(el,i){ el.style.transitionDelay=Math.min(i*40,240)+'ms'; io.observe(el); });
+  /* safety net: content must never stay hidden if the observer stalls */
+  clearTimeout(reveal._t);
+  reveal._t=setTimeout(function(){
+    document.querySelectorAll('.page.on .rv:not(.in)').forEach(function(el){el.classList.add('in')});
+  },1100);
+}
+
+/* ---------- case-nav active state ---------- */
+var cnavIO=null;
+function wireCnav(){
+  var page=document.querySelector('.page.on'); if(!page)return;
+  var nav=page.querySelector('.cnav'); if(!nav)return;
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))}).filter(Boolean);
+  if(cnavIO)cnavIO.disconnect();
+  cnavIO=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        links.forEach(function(a){a.classList.toggle('on','#'+en.target.id===a.getAttribute('href'))});
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  secs.forEach(function(s){cnavIO.observe(s)});
+  links.forEach(function(a){a.onclick=function(e){
+    e.preventDefault();
+    var t=document.getElementById(a.getAttribute('href').slice(1));
+    if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  };});
+}
+
+/* ---------- hero canvas ---------- */
+(function(){
+  var cv=document.getElementById('net'); if(!cv)return;
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(pointer: fine)').matches;
+  if(reduced)return; // static hero for reduced motion
+  var ctx=cv.getContext('2d'),W,H,DPR=Math.min(devicePixelRatio||1,2),N=innerWidth<760?22:40;
+  var nodes=[],mx=-1e4,my=-1e4,raf=null,running=false;
+  function accent(){return getComputedStyle(root).getPropertyValue('--acc').trim()||'#0E5A64'}
+  function size(){
+    var r=cv.parentElement.getBoundingClientRect();
+    W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  function init(){nodes=[];for(var i=0;i<N;i++){nodes.push({x:Math.random()*W,y:Math.random()*H,
+    vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:1.4+Math.random()*1.6});}}
+  function step(){
+    ctx.clearRect(0,0,W,H);
+    var col=accent();
+    for(var i=0;i<N;i++){var n=nodes[i];
+      n.x+=n.vx;n.y+=n.vy;
+      if(fine){var dx=n.x-mx,dy=n.y-my,d2=dx*dx+dy*dy;
+        if(d2<16000){var d=Math.sqrt(d2)||1;n.x+=dx/d*.5;n.y+=dy/d*.5;}}
+      if(n.x<-20)n.x=W+20;if(n.x>W+20)n.x=-20;if(n.y<-20)n.y=H+20;if(n.y>H+20)n.y=-20;
+    }
+    ctx.lineWidth=1;
+    for(var a=0;a<N;a++)for(var b=a+1;b<N;b++){
+      var p=nodes[a],q=nodes[b],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+      if(d2<15000){ctx.globalAlpha=Math.max(0,.32-(d2/15000)*.32);
+        ctx.strokeStyle=col;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}
+    }
+    ctx.globalAlpha=.75;ctx.fillStyle=col;
+    for(var k=0;k<N;k++){var m=nodes[k];ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,7);ctx.fill();}
+    ctx.globalAlpha=1;
+    raf=requestAnimationFrame(step);
+  }
+  function start(){if(!running){running=true;size();if(!nodes.length)init();step();}}
+  function stop(){running=false;if(raf)cancelAnimationFrame(raf);}
+  addEventListener('resize',function(){if(running){size();}});
+  if(fine)addEventListener('pointermove',function(e){
+    var r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;});
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+  var hio=new IntersectionObserver(function(es){es[0].isIntersecting?start():stop();});
+  hio.observe(cv);
+})();
+
+/* ---------- résumé ---------- */
+(function(){
+  var URL='Sanjay_Subramanyan_Resume.pdf';
+  [].slice.call(document.querySelectorAll('#resumeBtn,.resume-dl')).forEach(function(b){
+    b.hidden=false;
+    b.addEventListener('click',function(){
+      var a=document.createElement('a');
+      a.href=URL; a.download='Sanjay_Subramanyan_Resume.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+  });
+})();
+
+route();
+})();
+</script>
+
+</body>
+</html>
